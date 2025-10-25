@@ -6,8 +6,13 @@
 <title>My Love Letter</title>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 <style>
-  body {
+  * {
+    box-sizing: border-box;
     margin: 0;
+    padding: 0;
+  }
+
+  body {
     height: 100vh;
     background: radial-gradient(circle at center, #fdeef2, #f7c9d2);
     display: flex;
@@ -19,8 +24,10 @@
   }
 
   .book {
-    width: 800px;
-    height: 500px;
+    width: 90%;
+    max-width: 800px;
+    height: 60vh;
+    max-height: 500px;
     position: relative;
     transform-style: preserve-3d;
     transform: rotateY(0deg);
@@ -41,26 +48,28 @@
     color: white;
     text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
     font-family: "Great Vibes", cursive;
-    font-size: 2.5rem;
+    font-size: 2rem;
     backface-visibility: hidden;
     transform-origin: left;
+    padding: 10px;
+    text-align: center;
   }
 
   .inner {
     position: absolute;
     width: 100%;
     height: 100%;
-    display: flex;
+    display: flex; /* side by side */
     border-radius: 14px;
     box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
     overflow: hidden;
     transform: rotateY(-180deg);
     backface-visibility: hidden;
+    margin: 5px;
   }
 
   .left-page, .right {
     flex: 1;
-    box-sizing: border-box;
     height: 100%;
   }
 
@@ -70,40 +79,26 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    padding: 10px;
   }
 
-  /* Heart-shaped photo */
-  /* .heart-photo {
-    width: 220px;
-    height: 200px;
-    position: relative;
-    clip-path: path("M 110 30 C 110 0, 0 0, 0 70 C 0 140, 110 200, 110 200 C 110 200, 220 140, 220 70 C 220 0, 110 0, 110 30 Z");
+  .heart-photo {
+    width: 60%;          /* scales with parent */
+    max-width: 300px;    /* optional max size */
+    aspect-ratio: 1/1;   /* keeps it square */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
     animation: pop 2s ease-in-out infinite;
-    box-shadow: 0 10px 25px rgba(233, 64, 87, 0.4);
-  }
+}
+
 
   .heart-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  } */
-
-  .heart-photo {
-  width: 245px;          /* 70% of 350px */
-  height: 224px;         /* 70% of 320px */
-  position: relative;
-  clip-path: path("M 122 30 C 122 0, 0 0, 0 77 C 0 154, 122 224, 122 224 C 122 224, 245 154, 245 77 C 245 0, 122 0, 122 30 Z");
-  animation: pop 2s ease-in-out infinite;
-  box-shadow: 0 12px 28px rgba(233, 64, 87, 0.4);
-  overflow: hidden;
-}
-
-.heart-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
+  }
 
   @keyframes pop {
     0%, 100% { transform: scale(1); }
@@ -112,7 +107,7 @@
 
   .right {
     background: #fff;
-    padding: 60px;
+    padding: 40px;
     color: #3c2a21;
     overflow-y: auto;
     scrollbar-width: none;
@@ -126,22 +121,23 @@
 
   .right h2 {
     font-family: "Great Vibes", cursive;
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: #e94057;
     margin-bottom: 15px;
   }
 
   .right p {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    margin-bottom: 1.2em;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1em;
+    word-break: break-word;
   }
 
   .signature {
     text-align: right;
     font-family: "Great Vibes", cursive;
     color: #e94057;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin-top: 1em;
   }
 
@@ -149,13 +145,45 @@
     transform: rotateY(180deg);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     .book {
-      width: 90%;
-      height: 420px;
+      height: 55vh;
     }
     .right {
       padding: 30px;
+    }
+    .right h2 {
+      font-size: 1.8rem;
+    }
+    .heart-photo {
+      max-width: 200px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .book {
+      height: 50vh;
+    }
+    .right {
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+    .cover {
+      font-size: 1.6rem;
+    }
+    .right h2 {
+      font-size: 1.6rem;
+    }
+    .signature {
+      font-size: 1.2rem;
+    }
+    .heart-photo {
+      max-width: 150px;
+      width: 70%;
+      aspect-ratio: auto;
+    }
+    .heart {
+      font-size: 16px;
     }
   }
 
@@ -181,8 +209,17 @@
   <div class="inner">
     <div class="left-page">
       <div class="heart-photo">
-        <img src="pic26.jpg" alt="Heart Photo">
-      </div>
+  <svg viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <clipPath id="heartClip">
+<path d="M 250 62 C 250 0, 0 0, 0 157 C 0 308, 250 459, 250 459 C 250 459, 503 308, 503 157 C 503 0, 250 0, 250 62 Z"/>
+
+      </clipPath>
+    </defs>
+    <image xlink:href="pic26.jpg" width="100%" height="100%" clip-path="url(#heartClip)" preserveAspectRatio="xMidYMid slice"/>
+  </svg>
+</div>
+
     </div>
 
     <div class="right">
@@ -210,15 +247,37 @@
     book.classList.toggle('open');
   });
 
-  for (let i = 0; i < 15; i++) {
-    let heart = document.createElement('div');
-    heart.classList.add('heart');
-    heart.textContent = "❤️";
-    heart.style.left = Math.random() * 100 + "%";
-    heart.style.top = Math.random() * 100 + "%";
-    heart.style.animationDelay = Math.random() * 3 + "s";
-    document.body.appendChild(heart);
+  function createHearts(count) {
+    for (let i = 0; i < count; i++) {
+      let heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.textContent = "❤️";
+
+      // Make hearts stay inside viewport
+      let padding = 5; // 5% padding from edges
+      heart.style.left = padding + Math.random() * (100 - 2 * padding) + "%";
+      heart.style.top = padding + Math.random() * (100 - 2 * padding) + "%";
+
+      // Random animation delay
+      heart.style.animationDelay = Math.random() * 3 + "s";
+
+      // Random size variation for responsiveness
+      heart.style.fontSize = (16 + Math.random() * 10) + "px";
+
+      document.body.appendChild(heart);
+    }
   }
+
+  createHearts(15);
+
+  // Reposition hearts on window resize to stay inside viewport
+  window.addEventListener('resize', () => {
+    document.querySelectorAll('.heart').forEach(heart => {
+      let padding = 5;
+      heart.style.left = padding + Math.random() * (100 - 2 * padding) + "%";
+      heart.style.top = padding + Math.random() * (100 - 2 * padding) + "%";
+    });
+  });
 </script>
 
 </body>
