@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Love Letter</title>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
- <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
   * {
@@ -49,7 +49,7 @@
     align-items: center;
     color: white;
     text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-    font-family: cursive;
+    font-family: "Great Vibes", cursive;
     font-size: 2rem;
     backface-visibility: hidden;
     transform-origin: left;
@@ -217,7 +217,7 @@
 <body>
 
 <div class="book" id="book">
-  <div class="cover" style="font-family: Great vibes !important;">💌 For Someone Special 💌</div>
+  <div class="cover">💌 For Someone Special 💌</div>
 
   <div class="inner">
     <div class="left-page">
@@ -240,14 +240,26 @@
       <p>Happy Birthday Vaibhuuuuuuuuu🥳🥳
         <br>💌 Aa sirf letter nathi mara dil 💖 ni vaatoo che
 <br>Jyare pan aapde madye che 🤗 mane bauu saru lage che 😍 em thaye che ki aa time⌛ jaye aj nai kyai bs stop thai jaye n apde banno sathej rahiye 🫂💕
-<br>Tane yaad che Last Birthday 🎂 uper aapde mara ghare hata 🏡 n ek ek karine tu gift🎁 joti hati n Websites 🌐 joti hati ee joine bauu aj khush 😄 thati hati eevi khushi hamesha reh tara sathe🥰😚
 <br>Bauu phela jyare aapde relation ❤️ maa nata tyare aapde late night 🌃 talks 💬 karta hata — hamna pan kariye che but ee Talks yaad aave che mane n raat bhar 🌙 vaato karta-karta apde Relation maa aavi gaya 💞 Ekdum Bollywood jevu 🎬 like 15-16 Days aapde bau vaato kari n pachi Relation maa aavi gaya I’m very luckyyy to have You in my lifeee 😘
 <br>Tuu Jetli bahar thi khobsurat che 😍 eena thi pan vadhare ander thi pyarriii che 💖 like taru mannn bauu saaf chee✨💕
 <br>Maraa life maa tane koi Replace nai kari sakee 🙅‍♂️ its only youuu🫵🫶💞
 <br>Tu sirf aaj mate Special nathi 🎉 like taro Birthday 🎂 che eetle, Tuu Special rahis Hamesha Hamesha mate 💝🥰😘
 <br>Hu tane bauuuuuuuu aj Prem ❤️ karu chu tu jetlu souche che eenaa pan thi vadhare 😚💞
 <br> Today is your Day --- Live it to the Fullesttt.<br>
-<br>"I just want to be your BRA🫣 - Like ekdum <strong>Supportive 🤝, Protective 🛡️ n Dil na Ekdum Karib 💖💞</strong>"
+<br>
+<span id="secretTextWrapper" style="display:block; font-size:18px; line-height:1.6; margin-bottom:1em; word-break:break-word; font-family:sans-serif;">
+  <span id="secretTextWrapper" 
+      style="display:block; font-size:18px; line-height:1.6; 
+             word-break:break-word; font-family:sans-serif; color:#3c2a21;">
+
+  <span id="secretText" style="white-space:normal; display:inline-block;">
+    ••••••••••••••••••••••••••••••••••••••••••••
+  </span>
+  <button id="toggleBtn" 
+          style="background:none; border:none; cursor:pointer; font-size:18px;">
+    👁️
+  </button>
+</span>
       <br>
       </p>
       <p class="p-que">Q. I Can Love You for 4 Days</p>
@@ -301,14 +313,30 @@
       heart.style.top = padding + Math.random() * (100 - 2 * padding) + "%";
     });
   });
+
+
+ const toggleBtn = document.getElementById('toggleBtn');
+  const secretText = document.getElementById('secretText');
+  let revealed = false;
+
+  // Your message with 3 bold words (and emojis)
+  const realMessage = `I just want to be your BRA🫣 — Like ekdum 
+    <strong>Supportive 🤝</strong>, 
+    <strong>Protective 🛡️</strong>, 
+    and <strong>Dil thi ekdum Karib 💖💞</strong>`;
+
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // stop book flip
+    revealed = !revealed;
+    if (revealed) {
+      secretText.innerHTML = realMessage; // inject HTML correctly
+      toggleBtn.textContent = '🙈';
+    } else {
+      secretText.textContent = '••••••••••••••••••••••••••••••••••••••••••••••••••';
+      toggleBtn.textContent = '👁️';
+    }
+  });
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
